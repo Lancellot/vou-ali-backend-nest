@@ -20,10 +20,14 @@ O **Vou Ali** é uma aplicação para planejamento e controle de viagens. A prop
 
 ## Diagramas do projeto
 
-O projeto contempla:
-
 - Diagrama de Caso de Uso
+<img width="1400" height="1099" alt="Diagrama de Caso de Uso - vou Ali(1)" src="https://github.com/user-attachments/assets/8a9ff7d0-7c80-43ae-b18c-42a14f752eaa" />
+
+
+
 - Diagrama de Classes
+<img width="1800" height="1420" alt="Diagrama de classes" src="https://github.com/user-attachments/assets/5e8ca069-022c-452d-ac4a-ed9326c82360" />
+
 
 ## Tecnologias previstas
 
