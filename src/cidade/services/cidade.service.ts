@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { Cidade } from '../entities/cidade.entity';
 
 @Injectable()
@@ -27,7 +27,7 @@ export class CidadeService {
 
     async findByNome(nome: string): Promise<Cidade> {
         const cidade = await this.cidadeRepository.findOne({
-            where: { nome },
+            where: { nome: ILike(`%${nome}%`) }
         });
         if (!cidade)
             throw new HttpException('Cidade não encontrada!', HttpStatus.NOT_FOUND);
