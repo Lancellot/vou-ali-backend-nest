@@ -17,8 +17,7 @@ import { Cidade } from '../entities/cidade.entity';
 @ApiTags('Cidade')
 @Controller('/cidades')
 export class CidadeController {
-
-    constructor(private readonly cidadeService: CidadeService) {}
+    constructor(private readonly cidadeService: CidadeService) { }
 
     @Get('/all')
     @HttpCode(HttpStatus.OK)
