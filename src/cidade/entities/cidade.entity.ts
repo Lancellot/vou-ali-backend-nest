@@ -21,6 +21,6 @@ export class Cidade {
     @Column({ length: 100, nullable: true })
     pais!: string;
 
-    //@OneToMany(() => Parada, (parada) => parada.cidade)
-    //paradas!: Parada[];
+    @OneToMany(() => Parada, (parada) => parada.cidade)
+    paradas!: Parada[];
 }
