@@ -1,9 +1,32 @@
-import { Module } from '@nestjs/common';
+import { ClassSerializerInterceptor, Module } from '@nestjs/common';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { AppController } from './app.controller';
+import { UsuarioModule } from './usuario/usuario.module';
+import { DevService } from './data/services/dev.service';
+
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot(),
+
+    TypeOrmModule.forRootAsync({
+      useClass: DevService,
+      imports: [ConfigModule],
+    }),
+
+    UsuarioModule,
+  ],
+
   controllers: [AppController],
-  providers: [],
+
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ClassSerializerInterceptor,
+    },
+  ],
 })
 export class AppModule {}
