@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { UsuarioModule } from './usuario/usuario.module';
 import { DevService } from './data/services/dev.service';
+import { ViagemModule } from './viagem/viagem.module';
 
 
 @Module({
@@ -18,6 +19,7 @@ import { DevService } from './data/services/dev.service';
     }),
 
     UsuarioModule,
+    ViagemModule
   ],
 
   controllers: [AppController],

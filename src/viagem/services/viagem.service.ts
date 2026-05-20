@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { Viagem } from "../entities/viagem.entity";
 import { InjectRepository } from "@nestjs/typeorm";
-import { DeleteResult, Repository } from "typeorm";
+import { DeleteResult, ILike, Repository } from "typeorm";
 
 @Injectable()
 export class ViagemService {
@@ -18,7 +18,7 @@ export class ViagemService {
         });
     }
 
-    async findById(id: number): Promise<Viagem | null> {
+    async findById(id: number): Promise<Viagem> {
 
         const viagem = await this.viagemRepository.findOne({
             where: { id },
@@ -31,6 +31,21 @@ export class ViagemService {
             throw new HttpException('Viagem não encontrada', HttpStatus.NOT_FOUND);
         
         return viagem;
+    }
+
+    async findByTitulo(titulo: string): Promise<Viagem[]> {
+        const viagem = await this.viagemRepository.find({
+            where: { titulo: ILike(`%${titulo}%`) },
+            relations: {
+                usuario: true,
+            },
+        });
+
+        if (viagem.length === 0)
+            throw new HttpException('Viagem não encontrada', HttpStatus.NOT_FOUND);
+
+        return viagem;
+    
     }
 
     async create(viagem: Viagem): Promise<Viagem> {
