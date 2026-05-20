@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { UsuarioModule } from './usuario/usuario.module';
 import { DevService } from './data/services/dev.service';
 import { ViagemModule } from './viagem/viagem.module';
+import { CidadeModule } from './cidade/cidade.module';
 
 
 @Module({
@@ -19,7 +20,8 @@ import { ViagemModule } from './viagem/viagem.module';
     }),
 
     UsuarioModule,
-    ViagemModule
+    ViagemModule,
+    CidadeModule,
   ],
 
   controllers: [AppController],
