@@ -8,6 +8,7 @@ import {
     OneToMany,
     PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Viagem } from '../../viagem/entities/viagem.entity';
 
 @Entity({ name: 'tb_usuarios' })
 export class Usuario {
@@ -39,7 +40,7 @@ export class Usuario {
     @CreateDateColumn()
     createdAt!: Date;
 
-    //@ApiProperty({ description: 'Viagens do usuário' })
-    //@OneToMany(() => Viagem, (viagem) => viagem.usuario)
-    //viagens: Viagem[];
+    @ApiProperty({ description: 'Viagens do usuário' })
+    @OneToMany(() => Viagem, (viagem) => viagem.usuario)
+    viagens!: Viagem[];
 }
