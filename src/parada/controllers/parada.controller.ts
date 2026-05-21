@@ -13,7 +13,7 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 
 import { Parada } from '../entities/parada.entity';
-import { ParadaService } from '../services/parara.service';
+import { ParadaService } from '../services/parada.service';
 
 @ApiTags('Parada')
 @Controller('/paradas')
