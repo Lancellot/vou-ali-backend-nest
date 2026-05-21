@@ -6,6 +6,7 @@ import {
     OneToMany,
     PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Parada } from '../../parada/entities/parada.entity';
 
 
 @Entity({ name: 'tb_cidades' })
