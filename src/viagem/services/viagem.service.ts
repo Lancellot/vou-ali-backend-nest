@@ -23,13 +23,13 @@ export class ViagemService {
         const viagem = await this.viagemRepository.findOne({
             where: { id },
             relations: {
-            usuario: true,
+                usuario: true,
             },
         });
 
-        if (!viagem) 
+        if (!viagem)
             throw new HttpException('Viagem não encontrada', HttpStatus.NOT_FOUND);
-        
+
         return viagem;
     }
 
@@ -45,7 +45,7 @@ export class ViagemService {
             throw new HttpException('Viagem não encontrada', HttpStatus.NOT_FOUND);
 
         return viagem;
-    
+
     }
 
     async create(viagem: Viagem): Promise<Viagem> {
@@ -59,5 +59,33 @@ export class ViagemService {
     async delete(id: number): Promise<DeleteResult> {
         await this.findById(id);
         return await this.viagemRepository.delete(id);
+    }
+
+    async findCompleteById(id: number): Promise<Viagem> {
+
+        const viagem = await this.viagemRepository.findOne({
+            where: {
+                id
+            },
+            relations: [
+                'usuario',
+                'paradas',
+                'paradas.cidade',
+                'paradas.atividades'
+            ],
+            order: {
+                paradas: {
+                    ordem: 'ASC',
+                },
+            },
+        });
+
+        if (!viagem)
+            throw new HttpException(
+                'Viagem não encontrada!',
+                HttpStatus.NOT_FOUND,
+            );
+
+        return viagem;
     }
 }
