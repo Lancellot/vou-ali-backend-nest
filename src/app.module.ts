@@ -9,6 +9,7 @@ import { DevService } from './data/services/dev.service';
 import { ViagemModule } from './viagem/viagem.module';
 import { CidadeModule } from './cidade/cidade.module';
 import { ParadaModule } from './parada/parada.module';
+import { AtividadeModule } from './atividade/atividade.module';
 
 
 @Module({
@@ -24,6 +25,7 @@ import { ParadaModule } from './parada/parada.module';
     ViagemModule,
     CidadeModule,
     ParadaModule,
+    AtividadeModule,
   ],
 
   controllers: [AppController],

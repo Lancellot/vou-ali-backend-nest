@@ -4,6 +4,7 @@ import { Usuario } from "../../usuario/entities/usuario.entity";
 import { Viagem } from "../../viagem/entities/viagem.entity";
 import { Cidade } from "../../cidade/entities/cidade.entity";
 import { Parada } from "../../parada/entities/parada.entity";
+import { Atividade } from "../../atividade/entities/atividade.entity";
 
 @Injectable()
 export class DevService implements TypeOrmOptionsFactory {
@@ -16,7 +17,7 @@ export class DevService implements TypeOrmOptionsFactory {
             username: process.env.DB_USERNAME,
             password: process.env.DB_PASSWORD,
             database: process.env.DB_DATABASE,
-            entities: [Usuario, Viagem, Cidade, Parada],
+            entities: [Usuario, Viagem, Cidade, Parada, Atividade],
             synchronize: true,
         };
     }

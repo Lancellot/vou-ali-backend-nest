@@ -26,6 +26,12 @@ export class ViagemController {
         return this.viagemService.findByTitulo(titulo);
     }
 
+    @Get('/:id/completa')
+    @HttpCode(HttpStatus.OK)
+    findCompleteById(@Param('id') id: number): Promise<Viagem> {
+    return this.viagemService.findCompleteById(id);
+    }
+
     @Post()
     @HttpCode(HttpStatus.CREATED)
     create(@Body() viagem: Viagem): Promise<Viagem> {
