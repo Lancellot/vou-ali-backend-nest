@@ -12,6 +12,7 @@ import {
 import { Usuario } from '../../usuario/entities/usuario.entity';
 import { Parada } from '../../parada/entities/parada.entity';
 import { join } from 'path';
+import { Despesa } from '../../despesa/entities/despesa.entity';
 
 
 @Entity({ name: 'tb_viagens' })
@@ -69,4 +70,8 @@ export class Viagem {
     @OneToMany(() => Parada, (parada) => parada.viagem)
     @JoinColumn({ name: 'paradas' })
     paradas!: Parada[];
+
+    @OneToMany(() => Despesa, (despesa) => despesa.viagem)
+    @JoinColumn({ name: 'despesas' })
+    despesas!: Despesa[];
 }

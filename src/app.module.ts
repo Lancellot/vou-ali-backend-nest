@@ -10,6 +10,7 @@ import { ViagemModule } from './viagem/viagem.module';
 import { CidadeModule } from './cidade/cidade.module';
 import { ParadaModule } from './parada/parada.module';
 import { AtividadeModule } from './atividade/atividade.module';
+import { DespesaModule } from './despesa/despesa.module';
 
 
 @Module({
@@ -26,6 +27,7 @@ import { AtividadeModule } from './atividade/atividade.module';
     CidadeModule,
     ParadaModule,
     AtividadeModule,
+    DespesaModule,
   ],
 
   controllers: [AppController],
