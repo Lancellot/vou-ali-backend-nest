@@ -8,6 +8,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { DevService } from './data/services/dev.service';
 import { ViagemModule } from './viagem/viagem.module';
 import { CidadeModule } from './cidade/cidade.module';
+import { ParadaModule } from './parada/parada.module';
 
 
 @Module({
@@ -22,6 +23,7 @@ import { CidadeModule } from './cidade/cidade.module';
     UsuarioModule,
     ViagemModule,
     CidadeModule,
+    ParadaModule,
   ],
 
   controllers: [AppController],

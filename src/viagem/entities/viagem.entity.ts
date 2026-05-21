@@ -6,9 +6,12 @@ import {
     Entity,
     JoinColumn,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Usuario } from '../../usuario/entities/usuario.entity';
+import { Parada } from '../../parada/entities/parada.entity';
+import { join } from 'path';
 
 
 @Entity({ name: 'tb_viagens' })
@@ -62,4 +65,8 @@ export class Viagem {
     })
     @JoinColumn({ name: 'usuario_id' })
     usuario!: Usuario;
+    
+    @OneToMany(() => Parada, (parada) => parada.viagem)
+    @JoinColumn({ name: 'paradas' })
+    paradas!: Parada[];
 }
