@@ -8,14 +8,18 @@ import {
     Param,
     Post,
     Put,
+    UseGuards,
 } from '@nestjs/common';
 
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CidadeService } from '../services/cidade.service';
 import { Cidade } from '../entities/cidade.entity';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 
 @ApiTags('Cidade')
+@UseGuards(JwtAuthGuard)
 @Controller('/cidades')
+@ApiBearerAuth()
 export class CidadeController {
     constructor(private readonly cidadeService: CidadeService) { }
 

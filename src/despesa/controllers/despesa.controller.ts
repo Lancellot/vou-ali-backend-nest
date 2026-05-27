@@ -8,14 +8,18 @@ import {
     Param,
     Post,
     Put,
+    UseGuards,
 } from '@nestjs/common';
 
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 import { Despesa } from '../entities/despesa.entity';
 import { DespesaService } from '../services/despesa.service';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 
 @ApiTags('Despesa')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('/despesas')
 export class DespesaController {
 
