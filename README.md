@@ -67,7 +67,7 @@ Antes de executar o projeto, verifique se você possui:
 ### 1. Clone o repositório
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/Lancellot/vou-ali-backend-nest.git
 cd vou-ali-backend-nest
 ```
 
