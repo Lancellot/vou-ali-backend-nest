@@ -42,10 +42,4 @@ export class UsuarioController {
     update(@Body() usuario: Usuario): Promise<Usuario> {
         return this.usuarioService.update(usuario);
     }
-
-    @Delete('/remover/:id')
-    @HttpCode(HttpStatus.OK)
-    delete(@Param('id') id: number): Promise<void> {
-        return this.usuarioService.delete(id);
-    }
 } 
