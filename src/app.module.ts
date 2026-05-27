@@ -11,6 +11,7 @@ import { CidadeModule } from './cidade/cidade.module';
 import { ParadaModule } from './parada/parada.module';
 import { AtividadeModule } from './atividade/atividade.module';
 import { DespesaModule } from './despesa/despesa.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -28,6 +29,7 @@ import { DespesaModule } from './despesa/despesa.module';
     ParadaModule,
     AtividadeModule,
     DespesaModule,
+    AuthModule,
   ],
 
   controllers: [AppController],
