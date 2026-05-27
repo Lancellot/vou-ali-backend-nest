@@ -26,7 +26,8 @@ O **Vou Ali** é uma aplicação para planejamento e controle de viagens. A prop
 
 
 - Diagrama de Classes
-<img width="1800" height="1420" alt="Diagrama de classes" src="https://github.com/user-attachments/assets/5e8ca069-022c-452d-ac4a-ed9326c82360" />
+<img width="2280" height="1420" alt="Diagrama de classes(1)" src="https://github.com/user-attachments/assets/a6a986fc-2f60-48f3-8ffe-4ea7bc4f0602" />
+
 
 
 ## Tecnologias previstas
