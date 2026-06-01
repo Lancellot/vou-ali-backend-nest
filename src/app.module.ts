@@ -12,6 +12,7 @@ import { AtividadeModule } from './atividade/atividade.module';
 import { DespesaModule } from './despesa/despesa.module';
 import { AuthModule } from './auth/auth.module';
 import { ProdService } from './data/services/prod.service';
+import { DevService } from './data/services/dev.service';
 
 
 @Module({
@@ -19,7 +20,7 @@ import { ProdService } from './data/services/prod.service';
     ConfigModule.forRoot(),
 
     TypeOrmModule.forRootAsync({
-      useClass: ProdService,
+      useClass: DevService,
       imports: [ConfigModule],
     }),
 
