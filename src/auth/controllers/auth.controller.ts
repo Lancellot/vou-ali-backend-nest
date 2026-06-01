@@ -15,4 +15,10 @@ export class AuthController {
         return this.authService.login(email);
     }
 
+    @HttpCode(HttpStatus.OK)
+    @Post('/google')
+    loginGoogle(@Body('credential') credential: string): Promise<any> {
+    return this.authService.loginGoogle(credential);
+}
+
 }
