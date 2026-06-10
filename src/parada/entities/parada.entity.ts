@@ -39,6 +39,9 @@ export class Parada {
 
     cidadeId!: number;
 
-    @OneToMany(() => Atividade, (atividade) => atividade.parada)
+    @OneToMany(() => Atividade, (atividade) => atividade.parada,{
+        cascade: true,
+        onDelete: 'CASCADE',
+    })
     atividades!: Atividade[];
 }

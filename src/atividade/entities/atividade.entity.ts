@@ -23,7 +23,9 @@ export class Atividade {
     @Column()
     dataHora!: Date;
 
-    @ManyToOne(() => Parada, (parada) => parada.atividades)
+    @ManyToOne(() => Parada, (parada) => parada.atividades, {
+        onDelete: 'CASCADE',
+    })
     @JoinColumn({ name: 'paradaId' })
     parada!: Parada;
 
