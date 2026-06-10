@@ -30,14 +30,13 @@ export class Parada {
     @JoinColumn({ name: 'viagemId' })
     viagem!: Viagem;
 
-    @Column()
+    
     viagemId!: number;
 
-    @ManyToOne(() => Cidade, (cidade) => cidade.paradas)
+    @ManyToOne(() => Cidade, (cidade) => cidade.paradas, { eager: true })
     @JoinColumn({ name: 'cidadeId' })
     cidade!: Cidade;
 
-    @Column()
     cidadeId!: number;
 
     @OneToMany(() => Atividade, (atividade) => atividade.parada)
