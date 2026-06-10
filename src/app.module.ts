@@ -13,6 +13,7 @@ import { DespesaModule } from './despesa/despesa.module';
 import { AuthModule } from './auth/auth.module';
 import { ProdService } from './data/services/prod.service';
 import { DevService } from './data/services/dev.service';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 @Module({
@@ -31,6 +32,7 @@ import { DevService } from './data/services/dev.service';
     AtividadeModule,
     DespesaModule,
     AuthModule,
+    DashboardModule,
   ],
 
   controllers: [AppController],

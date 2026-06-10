@@ -18,6 +18,15 @@ export class ViagemService {
         });
     }
 
+    async findAllByUsuario(usuarioId: number): Promise<Viagem[]> {
+    return this.viagemRepository.find({
+        where: {
+            usuario: { id: usuarioId },
+        },
+        relations: ['paradas', 'despesas', 'usuario'],
+    });
+    }
+
     async findById(id: number): Promise<Viagem> {
 
         const viagem = await this.viagemRepository.findOne({
@@ -48,9 +57,12 @@ export class ViagemService {
 
     }
 
-    async create(viagem: Viagem): Promise<Viagem> {
-        return this.viagemRepository.save(viagem);
-    }
+    async create(viagem: Viagem, usuarioId: number): Promise<Viagem> {
+    return this.viagemRepository.save({
+        ...viagem,
+        usuario: { id: usuarioId },
+    });
+}
 
     async update(viagem: Viagem): Promise<Viagem> {
         return this.viagemRepository.save(viagem);
@@ -71,7 +83,8 @@ export class ViagemService {
                 'usuario',
                 'paradas',
                 'paradas.cidade',
-                'paradas.atividades'
+                'paradas.atividades',
+                'despesas',
             ],
             order: {
                 paradas: {
