@@ -31,16 +31,6 @@ export class DashboardService {
         ],
     });
 
-    console.log(
-        'Viagens encontradas:',
-        viagens.map(v => ({
-            id: v.id,
-            titulo: v.titulo,
-            usuarioId: v.usuario?.id,
-            email: v.usuario?.email,
-        }))
-    );
-
         const totalViagens =
             viagens.length;
 

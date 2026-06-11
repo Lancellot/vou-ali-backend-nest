@@ -20,9 +20,6 @@ export class DashboardController {
     @Get()
     dashboard(@Request() req: any) {
 
-        console.log('JWT USER =>', req.user);
-
-
         return this.dashboardService.dashboard(
             req.user.id,
         );
