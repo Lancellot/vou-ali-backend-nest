@@ -74,4 +74,6 @@ export class Viagem {
     @OneToMany(() => Despesa, (despesa) => despesa.viagem)
     @JoinColumn({ name: 'despesas' })
     despesas!: Despesa[];
+
+    
 }

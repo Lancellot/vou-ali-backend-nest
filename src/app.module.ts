@@ -5,7 +5,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { UsuarioModule } from './usuario/usuario.module';
-
 import { ViagemModule } from './viagem/viagem.module';
 import { CidadeModule } from './cidade/cidade.module';
 import { ParadaModule } from './parada/parada.module';
@@ -13,6 +12,7 @@ import { AtividadeModule } from './atividade/atividade.module';
 import { DespesaModule } from './despesa/despesa.module';
 import { AuthModule } from './auth/auth.module';
 import { ProdService } from './data/services/prod.service';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 @Module({
@@ -31,6 +31,7 @@ import { ProdService } from './data/services/prod.service';
     AtividadeModule,
     DespesaModule,
     AuthModule,
+    DashboardModule,
   ],
 
   controllers: [AppController],
