@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Req, UseGuards } from "@nestjs/common";
 import { ViagemService } from "../services/viagem.service";
 import { Viagem } from "../entities/viagem.entity";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
+import type { Request } from "express";
 
 @ApiTags('Postagem')
 @ApiBearerAuth()
@@ -13,8 +14,9 @@ export class ViagemController {
 
     @Get()
     @HttpCode(HttpStatus.OK)
-    findAll(): Promise<Viagem[]> {
-        return this.viagemService.findAll();
+    findAll(@Req() req: Request): Promise<Viagem[]> {
+        const usuarioId = (req as any).user.id;
+        return this.viagemService.findAllByUsuario(usuarioId);
     }
 
     @Get('/:id')
@@ -36,10 +38,10 @@ export class ViagemController {
     }
 
     @Post()
-    @HttpCode(HttpStatus.CREATED)
-    create(@Body() viagem: Viagem): Promise<Viagem> {
-        return this.viagemService.create(viagem);
-    }
+    @HttpCode(HttpStatus.OK)
+    create(@Req() req: any, @Body() viagem: Viagem) {
+    return this.viagemService.create(viagem, req.user.id);
+}
 
     @Put()
     @HttpCode(HttpStatus.OK)
@@ -52,4 +54,6 @@ export class ViagemController {
     delete(@Param('id', ParseIntPipe) id: number) {
         return this.viagemService.delete(id);
     }
+
+
 }

@@ -3,12 +3,27 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ILike, Repository } from 'typeorm';
 import { Cidade } from '../entities/cidade.entity';
 
+import cidadesSeed from '../seed/cidades.seed.json';
+
 @Injectable()
 export class CidadeService {
     constructor(
         @InjectRepository(Cidade)
         private cidadeRepository: Repository<Cidade>,
     ) {}
+
+        async onModuleInit() {
+        await this.seedCidades();
+    }
+
+    private async seedCidades() {
+        const count = await this.cidadeRepository.count();
+
+        if (count > 0) return;
+
+        await this.cidadeRepository.save(cidadesSeed);
+
+    }
 
     async findAll(): Promise<Cidade[]> {
         return this.cidadeRepository.find();

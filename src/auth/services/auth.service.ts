@@ -37,23 +37,32 @@ export class AuthService {
 
     async login(usuarioLogin: UsuarioLogin) {
 
-        const usuario = await this.validateUser(usuarioLogin.email, usuarioLogin.senha);
-        
-        if (!usuario) {
-            throw new HttpException('Email ou senha incorretos!', HttpStatus.UNAUTHORIZED);
-        }
+    const usuario = await this.validateUser(
+        usuarioLogin.email,
+        usuarioLogin.senha
+    );
 
-        const payload = { sub: usuario.email };
-        
-        return {
-            id: usuario.id,
-            nome: usuario.nome,
-            email: usuario.email,
-            createdAt: usuario.createdAt,
-            viagens: usuario.viagens,
-            token: `Bearer ${this.jwtService.sign(payload)}`,
-        };
+    if (!usuario) {
+        throw new HttpException(
+            'Email ou senha incorretos!',
+            HttpStatus.UNAUTHORIZED
+        );
     }
+
+    const payload = {
+        sub: usuario.id,
+        email: usuario.email,
+    };
+
+    return {
+        id: usuario.id,
+        nome: usuario.nome,
+        email: usuario.email,
+        createdAt: usuario.createdAt,
+        viagens: usuario.viagens,
+        token: `Bearer ${this.jwtService.sign(payload)}`,
+    };
+}
 
     async loginGoogle(credential: string) {
     const ticket = await this.googleClient.verifyIdToken({
@@ -76,7 +85,7 @@ export class AuthService {
         } as Usuario);
     }
 
-    const jwtPayload = { sub: usuario.email };
+    const jwtPayload = { sub: usuario.id, email: usuario.email };
 
     return {
         id: usuario.id,
