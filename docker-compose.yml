@@ -1,0 +1,26 @@
+services:
+  api:
+    build: .
+    container_name: vouali-api
+    restart: always
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: vouali-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_vouali
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
