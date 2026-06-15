@@ -15,7 +15,7 @@ services:
     container_name: vouali-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: x
       MYSQL_DATABASE: db_vouali
     ports:
       - "3307:3306"
