@@ -13,6 +13,7 @@ import { DespesaModule } from './despesa/despesa.module';
 import { AuthModule } from './auth/auth.module';
 import { ProdService } from './data/services/prod.service';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { DevService } from './data/services/dev.service';
 
 
 @Module({
@@ -20,7 +21,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     ConfigModule.forRoot(),
 
     TypeOrmModule.forRootAsync({
-      useClass: ProdService,
+      useClass:DevService,
       imports: [ConfigModule],
     }),
 
